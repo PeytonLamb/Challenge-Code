@@ -24,7 +24,7 @@ const findSum = function(array) {
         }
 			if(currentAmount > mostFrequent){
       	mostFrequent = currentAmount
-          	 	let mostOccurring = array[0] = curr
+          	 	mostOccurring = curr
       }
     	
     }
