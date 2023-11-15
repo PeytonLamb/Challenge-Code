@@ -1,0 +1,114 @@
+const findSum = function(array) {
+    const sum = array.reduce((counter, current) =>{return counter + current}, 0)
+    return sum
+  };
+
+
+
+  
+  const findFrequency = function(array) {
+  	 	let mostOccurring = array[0]
+    let leastOccurring = array[0]
+		let currentAmount = 1
+    let mostFrequent = 0
+    let leastFrequent = array.length 
+    let currentAmountLeast = 1
+    const changedArray = array.sort((a, b) => a.localeCompare(b))
+    for(let i = 1; i < changedArray.length; i++){
+    	const curr = changedArray[i]
+      	if(curr === changedArray[i - 1]){
+        	currentAmount++
+        }
+        else{
+        	currentAmount = 1
+        }
+			if(currentAmount > mostFrequent){
+      	mostFrequent = currentAmount
+          	 	let mostOccurring = array[0] = curr
+      }
+    	
+    }
+    for(let i = 1; i < changedArray.length; i++){
+    const curr = changedArray[i]
+    	if(curr === changedArray[i - 1]){
+      	currentAmountLeast++
+      }
+      else{
+      	if(currentAmountLeast < leastFrequent){
+        	leastFrequent = currentAmountLeast
+          leastOccurring = changedArray[i - 1]
+        }
+      	currentAmountLeast = 1
+      }
+    }
+    return { most: mostOccurring, least: leastOccurring}
+  };
+  
+  
+  const isPalindrome = function(str) {
+    for(let a = 0; a < str.length; a++){
+
+    	if(str[a].toLowerCase() !== str[str.length - (a + 1)].toLowerCase()){
+      return false
+
+      }
+    }
+    return true
+  };
+
+  
+  const largestPair = function(array) {
+  	let currentGreatestPair = array[0] * array[1]
+    for(let i = 0; i < array.length - 1; i++){
+    	const currentProduct = (array[i] * array[i + 1])
+    	if(currentProduct > currentGreatestPair){
+      	currentGreatestPair = currentProduct
+      }
+    }
+    return currentGreatestPair
+  };
+ 
+  
+  const removeParenth = function(str) {
+    const removeOpening = str.split('(')[0]
+    const removeClosing = str.split(')')[1]
+    return removeOpening + removeClosing
+  };
+
+
+  const scoreScrabble = function(str) {
+  const point1 = ['a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't']
+  const point2 = ['d', 'g']
+  const point3 = ['b', 'c', 'm', 'p']
+  const point4 = ['f', 'h', 'v', 'w', 'y']
+  const point5 = ['k']
+  const point8 = ['j', 'x']
+  const point10 = ['q', 'z']
+  let finalPoint = 0
+  for(let i = 0; i < str.length; i++){
+  	const curr = str[i].toLowerCase()
+    if(point1.includes(curr)){
+    	finalPoint += 1
+    }
+    else if(point2.includes(curr)){
+    	finalPoint += 2
+    }
+        else if(point3.includes(curr)){
+    	finalPoint += 3
+    }
+        else if(point4.includes(curr)){
+    	finalPoint += 4
+    }
+        else if(point5.includes(curr)){
+    	finalPoint += 5
+    }
+        else if(point8.includes(curr)){
+    	finalPoint += 8
+    }
+        else if(point10.includes(curr)){
+    	finalPoint += 10
+    }
+  }
+  return finalPoint
+  };
+  
